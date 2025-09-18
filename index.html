@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compensation Calculator Project</title>
+    <style>
+        body { font-family: Arial; background-color: #f0f8ff; color: #000; text-align: center; }
+        h1 { color: #2e8b57; margin-bottom: 5px; }
+        .link { margin-bottom: 20px; }
+        select, input { font-size: 16px; padding: 7px; margin: 5px; width: 250px; }
+        button { font-size: 16px; padding: 10px 20px; background-color: #2e8b57; color: white; border: none; cursor: pointer; margin-top: 10px; }
+        button:hover { background-color: #3cb371; }
+        .result { color: darkblue; font-weight: bold; margin-top: 20px; }
+        .form-container { background-color: #ffffff; padding: 20px; border-radius: 10px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Compensation Calculator Project</h1>
+    <div class="link">
+        <a href="https://yourcompanylink.com" target="_blank">Company Link</a>
+    </div>
+
+    <div class="form-container">
+        <form method="POST">
+            <input type="number" step="0.01" name="combo_price" placeholder="Enter combo price (SAR)" required><br>
+            <select name="missing_item" required>
+                <option value="Main Dish">Main Dish</option>
+                <option value="Side Dish">Side Dish</option>
+                <option value="Drink">Drink</option>
+                <option value="Cutlery">Cutlery</option>
+                <option value="Sauce">Sauce</option>
+            </select><br>
+            <select name="compensation_type" required>
+                <option value="Wallet">Wallet</option>
+                <option value="Refund">Refund</option>
+            </select><br>
+            <select name="status" required>
+                <option value="Missing">Missing</option>
+                <option value="Wrong">Wrong</option>
+            </select><br>
+            <button type="submit">Calculate Compensation</button>
+        </form>
+    </div>
+
+    {% if result %}
+        <div class="result">
+            {% for key, value in result.items() %}
+                <p>{{ key }}: {{ value }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>
